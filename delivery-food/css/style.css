@@ -41,12 +41,16 @@ body {
 
 .input {
   background: #FFFFFF;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #d9d9d9;
   border-radius: 2px;
   font-size: 16px;
   line-height: 24px;
   padding: 8px;
   padding-left: 35px;
+}
+
+.input::placeholder {
+  color: #c5c5c5;
 }
 
 .input-address {
@@ -71,6 +75,13 @@ body {
   color: #595959;
   font-size: 16px;
   line-height: 24px;
+  transition: all .2s linear;
+}
+
+.button:hover,
+.button:focus {
+  box-shadow: 4px 4px 6px -2px #8C8C8C;
+  cursor: pointer;
 }
 
 .button-primary {
@@ -78,6 +89,12 @@ body {
   border: 1px solid #1890FF;
   color: #fff;
   margin-right: 10px;
+}
+
+.button-primary:hover,
+.button-primary:focus {
+  box-shadow: 4px 4px 6px -2px #1890FF;
+  cursor: pointer;
 }
 
 .button-icon {
@@ -160,6 +177,13 @@ body {
   overflow: hidden;
   margin-bottom: 30px;
   flex-basis: 31%;
+  transition: all .3s ease-out;
+}
+
+.card:hover,
+.card:focus {
+  transform: translate(7px, -7px);
+  box-shadow: -7px 7px 11px -2px #696767;
 }
 
 .card-image {
@@ -296,6 +320,23 @@ body {
   font-size: 18px;
   line-height: 21px;
   color: #595959;
+  position: relative;
+}
+
+.footer-link::after {
+  content: "";
+  width: 0;
+  height: 1px;
+  background-color: #595959;
+  right: 0;
+  bottom: -5px;
+  position: absolute;
+  transition: all .3s ease-in;
+}
+
+.footer-link:hover::after,
+.footer-link:focus::after {
+  width: 100%;
 }
 
 .social-list {
@@ -475,6 +516,10 @@ body {
 
   .footer-link {
     font-size: 16px;
+  }
+
+  .footer-nav {
+    margin-right: 0;
   }
 }
 
