@@ -4,6 +4,7 @@ const close = document.querySelector('.close');
 
 cartButton.addEventListener('click', function (event) {
   modal.classList.add('is-open');
+  body.style.overflow = hidden;
 });
 close.addEventListener('click', function (event) {
   modal.classList.remove('is-open');
