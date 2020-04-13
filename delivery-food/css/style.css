@@ -436,6 +436,7 @@ body {
   background: #ffffff;
   border-radius: 5px;
   padding: 40px 45px;
+  overflow: auto;
 }
 
 .modal-header {
@@ -545,6 +546,10 @@ body {
   padding: 15px 20px;
   font-size: 20px;
   line-height: 23px;
+}
+
+.scroll {
+  overflow: hidden;
 }
 
 @media (max-width: 1366px) {
