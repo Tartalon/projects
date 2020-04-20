@@ -1,0 +1,140 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  background: #070506 url('../img/main-bg.png') top right no-repeat;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+.container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 90px 15px 110px;
+}
+
+.header {
+  display: flex;
+  text-align: center;
+  margin-bottom: 78px;
+}
+
+.logo {
+  margin-right: 70px;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav__list {
+  display: flex;
+}
+
+.nav__item:not(:last-child) {
+  margin-right: 15px;
+}
+
+.nav__link {
+  display: block;
+  color: #fff;
+}
+
+.hero__subtitle {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.hero__title {
+  font-size: 64px;
+  line-height: 78px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.hero__text {
+  width: 100%;
+  max-width: 572px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 150%;
+  color: #afafaf;
+  margin-bottom: 25px;
+}
+
+.hero__premiere {
+  display: block;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 400;
+  color: #b02000;
+  margin-bottom: 5px;
+}
+
+.hero__date {
+  display: block;
+  font-size: 24px;
+  line-height: 150%;
+  font-weight: 400;
+  margin-bottom: 46px;
+}
+
+.hero__button {
+  position: relative;
+  padding: 25px 85px 25px 34px;
+  background: linear-gradient(90deg, #FB641A 0%, #fc3309 100%);
+  border: none;
+  border-radius: 300px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: uppercase;
+  transition: all .3s;
+}
+
+.hero__button::after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  right: 0;
+  width: 65px;
+  height: 65px;
+  background: #fff url('../img/play.png') no-repeat center;
+  border-radius: 50%;
+}
+
+.hero__button::before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: -8px;
+  right: -8px;
+  width: 81px;
+  height: 81px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.hero__button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 4px 0px white;
+}
+
