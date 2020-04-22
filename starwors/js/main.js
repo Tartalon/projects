@@ -1,6 +1,7 @@
 $(document).ready(function () {
   $(".owl-carousel").owlCarousel({
     loop: true,
+    dots: false,
     margin: 10,
     nav: true,
     navClass: [
@@ -11,10 +12,10 @@ $(document).ready(function () {
       0: {
         items: 1,
       },
-      400: {
+      480: {
         items: 2,
       },
-      900: {
+      800: {
         items: 3,
       },
       1200: {
@@ -22,4 +23,19 @@ $(document).ready(function () {
       },
     },
   });
+});
+
+// burger menu
+document.querySelector(".nav__burger").addEventListener("click", function (e) {
+  e.preventDefault();
+  // this.classList.toggle("is-active");
+  if (this.classList.contains("is-active")) {
+    this.classList.remove("is-active");
+    document.querySelector("#nav").classList.remove("nav-active");
+    document.body.classList.remove("body-active");
+  } else {
+    this.classList.add("is-active");
+    document.querySelector("#nav").classList.add("nav-active");
+    document.body.classList.add("body-active");
+  }
 });
