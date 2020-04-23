@@ -15,11 +15,16 @@ li {
 }
 
 body {
-  background: #070506 url("../img/main-bg.png") top right no-repeat;
+  background: #070506 url("../img/main-bg.png") top left no-repeat;
   background-attachment: fixed;
   background-size: cover;
   font-family: "Roboto", sans-serif;
   color: white;
+  transition: all 0.5s linear;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 .container {
@@ -335,7 +340,7 @@ body {
     right: 0;
     top: 50px;
     bottom: 0;
-    transition: all 0.3s;
+    transition: all 0.5s;
   }
 
   #nav.nav-active {
@@ -365,5 +370,6 @@ body {
 
   .body-active {
     margin-right: 300px;
+    margin-left: -300px;
   }
 }

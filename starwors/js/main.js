@@ -32,10 +32,10 @@ document.querySelector(".nav__burger").addEventListener("click", function (e) {
   if (this.classList.contains("is-active")) {
     this.classList.remove("is-active");
     document.querySelector("#nav").classList.remove("nav-active");
-    document.body.classList.remove("body-active");
+    document.body.classList.remove("body-active", "no-scroll");
   } else {
     this.classList.add("is-active");
     document.querySelector("#nav").classList.add("nav-active");
-    document.body.classList.add("body-active");
+    document.body.classList.add("body-active", "no-scroll");
   }
 });
