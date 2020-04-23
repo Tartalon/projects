@@ -17,7 +17,7 @@ li {
 body {
   background: #070506 url("../img/main-bg.png") top left no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: contain;
   font-family: "Roboto", sans-serif;
   color: white;
   transition: all 0.5s linear;
@@ -43,6 +43,14 @@ body {
   max-width: 572px;
 }
 
+.logo__link {
+  display: block;
+}
+
+.logo__link:hover {
+  cursor: pointer;
+}
+
 /* navigation */
 
 .header__nav {
@@ -63,6 +71,25 @@ body {
 .nav__link {
   display: block;
   color: #fff;
+  position: relative;
+}
+
+.nav__link::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  left: 50%;
+  top: -5px;
+  display: block;
+  transform: translateX(-50%);
+  transition: all 0.3s linear;
+}
+
+.nav__link:hover::before,
+.nav__link:focus::before {
+  width: 100%;
 }
 
 .hero {
