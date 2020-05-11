@@ -41,7 +41,8 @@ const getData = async function (url) {
   // запрос на сервер при помощи апи фетч
   const response = fetch(url);
 
-  console.log(response);
+  //чтобы вывести данные их сначала необходимо получить. Получаем при помощи .json а вначале пишем await
+  console.log((await response).json());
 };
 
 // вызываем функцию и передаем туда url
