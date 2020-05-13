@@ -59,6 +59,10 @@ const getData = async function (url) {
 // вызываем функцию и передаем туда url. Вызываем в конце перед обьявлениями событий
 //console.log(getData("./db/partners.json"));
 
+const toggleModal = function () {
+  modal.classList.toggle("is-open");
+};
+
 // функция добавления класса .is-open
 // если функцию вкинуть в переменную то ее нельзя вызвать до объявления данной функции
 const toggleModalAuth = function () {
@@ -66,10 +70,6 @@ const toggleModalAuth = function () {
 
   //при нажатии на submit бордеру значение по умолчанию
   loginInput.style.borderColor = "";
-};
-
-const toggleModal = function () {
-  modal.classList.toggle("is-open");
 };
 
 function returnMain() {
@@ -94,7 +94,6 @@ function authorized() {
     userName.style.display = "";
     buttonOut.style.display = "";
     buttonOut.removeEventListener("click", logOut);
-
     checkAuth();
     returnMain();
   }
@@ -170,9 +169,9 @@ function checkAuth() {
 //функция создания карточек
 function createCardRestaurant(restaurant) {
   //получили объекты с ресторана
-  // console.log(restaurant);
+  console.log(restaurant);
 
-  // необходимо деструктурировать массив (объект)
+  // необходимо деструктурировать объект (массив)
   const {
     image,
     kitchen,
@@ -259,8 +258,7 @@ function openGoods(event) {
     //при клике на карточку запускаем проверку на авторизацию
 
     const restaurant = target.closest(".card-restaurant"); // closest поднимается по родителя пока не наткнется на указанный (если не находит то возвращает null)
-    // console.log(restaurant);
-
+    console.log(restaurant);
     if (restaurant) {
       // очищаем cardsMenu
       cardsMenu.textContent = "";
@@ -274,16 +272,17 @@ function openGoods(event) {
         // createCardGood();
         // createCardGood();
       });
-    } else {
-      toggleModalAuth();
     }
+  } else {
+    toggleModalAuth();
   }
 }
 
+//функция инициализации (запуска) проекта
 function init() {
   getData("./db/partners.json").then(function (data) {
     data.forEach(createCardRestaurant); //увидем 6 карточек тануки на странице
-  }); // в then указываем кол бек функцию ктороя выполниться после того как нам вернется ответ с сервера
+  }); // в then указываем кол-бек функцию кoтороя выполниться после того как нам вернется ответ с сервера. при помощи then обрабатываютс япромисы
 
   cartButton.addEventListener("click", toggleModal);
 
@@ -293,11 +292,7 @@ function init() {
   cardsRestaurants.addEventListener("click", openGoods);
 
   // при клике на лого в меню возврат на главную
-  logo.addEventListener("click", function () {
-    containerPromo.classList.remove("hide");
-    restaurants.classList.remove("hide");
-    menu.classList.add("hide");
-  });
+  logo.addEventListener("click", returnMain);
 
   // вызываем функцию при загрузке страницы чтобы произошла проверка в функции logIn
   checkAuth();
