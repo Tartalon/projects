@@ -26,6 +26,10 @@ const restaurants = document.querySelector(".restaurants");
 const menu = document.querySelector(".menu");
 const logo = document.querySelector(".logo");
 const cardsMenu = document.querySelector(".cards-menu");
+const restaurantTitle = document.querySelector(".restaurant-title");
+const rating = document.querySelector(".rating");
+const minPrice = document.querySelector(".price");
+const category = document.querySelector(".category");
 
 // создаем переменную login
 let login = localStorage.getItem("gloDelivery");
@@ -169,7 +173,7 @@ function checkAuth() {
 //функция создания карточек
 function createCardRestaurant(restaurant) {
   //получили объекты с ресторана
-  console.log(restaurant);
+  // console.log(restaurant);
 
   // необходимо деструктурировать объект (массив)
   const {
@@ -182,9 +186,12 @@ function createCardRestaurant(restaurant) {
     time_of_delivery: timeOfDelivery, //переиминовали переменную
   } = restaurant;
 
-  //переменная создания карточки (href убираем тюкю не будем переходить на другую страницу)
+  //переменная создания карточки (href убираем т.к. не будем переходить на другую страницу). При помощи data получаем со страницы необходимые елементы чтобы потом их передать в нужное место (createCardGood).
   const card = `
-    <a class="card card-restaurant" data-products="${products}">
+    <a class="card card-restaurant"
+    data-products="${products}"
+    data-info='${[name, price, stars, kitchen]}'
+    >
       <img src="${image}" class="card-image"/>
       <div class="card-text">
         <div class="card-heading">
@@ -215,11 +222,7 @@ function createCardGood({ description, image, name, price }) {
   card.insertAdjacentHTML(
     "beforeend",
     `
-    <img
-      src="${image}"
-      alt="image"
-      class="card-image"
-    />
+    <img src="${image}" alt="${name}" class="card-image"/>
     <div class="card-text">
       <div class="card-heading">
         <h3 class="card-title card-title-reg">${name}</h3>
@@ -259,12 +262,26 @@ function openGoods(event) {
 
     const restaurant = target.closest(".card-restaurant"); // closest поднимается по родителя пока не наткнется на указанный (если не находит то возвращает null)
     console.log(restaurant);
+
     if (restaurant) {
+      console.log(restaurant.dataset.info); // получили нужный массив только в виде строки. Теперь необходимо разделить на отдельные елементы и снова склеет в массив (split).
+      const info = restaurant.dataset.info.split(",");
+      console.log(info);
+
+      const [name, price, stars, kitchen] = info; //масив для заглавия при переходе в ресторан
+
       // очищаем cardsMenu
       cardsMenu.textContent = "";
       containerPromo.classList.add("hide");
       restaurants.classList.add("hide");
       menu.classList.remove("hide");
+
+      // заполнение заглавия на странице ресторана
+      restaurantTitle.textContent = name;
+      rating.textContent = stars;
+      minPrice.textContent = `От ${price} ₽`; //"От " + price + " ₽";
+      category.textContent = kitchen;
+
       getData(`./db/${restaurant.dataset.products}`).then(function (data) {
         data.forEach(createCardGood);
 
@@ -282,7 +299,7 @@ function openGoods(event) {
 function init() {
   getData("./db/partners.json").then(function (data) {
     data.forEach(createCardRestaurant); //увидем 6 карточек тануки на странице
-  }); // в then указываем кол-бек функцию кoтороя выполниться после того как нам вернется ответ с сервера. при помощи then обрабатываютс япромисы
+  }); // в then указываем кол-бек функцию кoтороя выполниться после того как нам вернется ответ с сервера. при помощи then обрабатываются промисы
 
   cartButton.addEventListener("click", toggleModal);
 
