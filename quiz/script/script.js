@@ -156,20 +156,11 @@ document.addEventListener("DOMContentLoaded", function () {
           prevButton.style.display = "inline-block";
         };
 
-
-
-
-        // if (numberQuestion == (questions.length - 1)) {
-        //   nextButton.style.display = "none";
-        // } else {
-        //   nextButton.style.display = "inline-block";
-        // };
-
-
-
-
-        console.log(questions.length);
-        console.log(numberQuestion)
+        if ((questions.length - 1) == numberQuestion) {
+          nextButton.style.display = "none";
+        } else {
+          nextButton.style.display = "inline-block";
+        };
 
         // console.log(questions[index].type);
         formAnswers.appendChild(answerItem);
