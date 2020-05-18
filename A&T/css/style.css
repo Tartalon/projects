@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: 'Helvetica-Roman';
+}
+
+@font-face {
+  font-family: 'Helvetica-Medium';
+  src: url('../../fonts/HelveticaNeueCyr-Medium.eot');
+  src: local('☺'), url('../fonts/HelveticaNeueCyr-Medium.woff') format('woff'),
+    url('../fonts/HelveticaNeueCyr-Medium.ttf') format('truetype'),
+    url('../fonts/HelveticaNeueCyr-Medium.svg') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica-Roman';
+  src: url('../fonts/helveticaneuecyr-roman.eot');
+  src: local('☺'), url('../fonts/helveticaneuecyr-roman.woff') format('woff'),
+    url('../fonts/helveticaneuecyr-roman.ttf') format('truetype'),
+    url('../fonts/helveticaneuecyr-roman.svg') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+.section-product {
+  width: 100%;
+  padding: 100px 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.products {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card {
+  max-width: 300px;
+  border: 1px solid #e2e2e2;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s linear;
+}
+
+.card:hover {
+  box-shadow: 0 0 5px 3px #e9e9e9;
+}
+
+.card__image-box {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card__image {
+  width: max-content;
+  height: max-content;
+}
+
+.card__topic {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #aeaeae;
+  margin-bottom: 15px;
+}
+
+.card__link {
+  font-size: 16px;
+  line-height: 21px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__price {
+  display: flex;
+  flex-direction: column;
+  max-width: 40%;
+}
+
+.price__prev {
+  font-size: 16px;
+  color: #aeaeae;
+  text-decoration: line-through;
+}
+
+.pricce__current {
+  font-family: 'Helvetica-Medium';
+  font-size: 18px;
+  display: flex;
+  word-spacing: 5px;
+}
+
+.pricce__current-coin {
+  font-size: 13px;
+  padding-right: 5px;
+}
+
+.card__button {
+  width: 150px;
+  height: 40px;
+  font-family: 'Helvetica-Medium';
+  font-size: 15px;
+  background-color: #ffd304;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.card__button:hover {
+  box-shadow: 0 0 5px 3px #e9e9e9;
+}
+
+.card__report {
+  font-family: 'Helvetica-Roman';
+  width: 120px;
+  height: 60px;
+  border-radius: 35px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: absolute;
+  top: -25px;
+  left: -50px;
+}
+
+.report-red {
+  background-color: #f30a2b;
+  color: #fff;
+  font-size: 14px;
+}
+
+.report-ellow {
+  background-color: #ffd304;
+  color: #000;
+  text-transform: uppercase;
+  font-size: 12px;
+}
