@@ -1,141 +1,177 @@
 // запрет на навешивание событий пока не загрузиться весь html. Весь код пишем в данной функции
-document.addEventListener("DOMContentLoaded", function () {
-  "use strict";
-  const btnOpenModal = document.querySelector("#btnOpenModal");
-  const modalBlock = document.querySelector("#modalBlock");
-  const modalWrap = document.querySelector(".modal");
-  const closeModal = document.querySelector("#closeModal");
-  const questionTitle = document.querySelector("#question");
-  const formAnswers = document.querySelector("#formAnswers");
-  const burgerBtn = document.getElementById("burger");
-  const nextButton = document.getElementById("next");
-  const prevButton = document.getElementById("prev");
+// глобальный обработчик событий, который отслеживает загрузку контента
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  const btnOpenModal = document.querySelector('#btnOpenModal');
+  const modalBlock = document.querySelector('#modalBlock');
+  const modalWrap = document.querySelector('.modal');
+  const closeModal = document.querySelector('#closeModal');
+  const questionTitle = document.querySelector('#question');
+  const formAnswers = document.querySelector('#formAnswers');
+  const burgerBtn = document.getElementById('burger');
+  const nextButton = document.getElementById('next');
+  const prevButton = document.getElementById('prev');
+  const modalDialog = document.querySelector('.modal-dialog');
 
-  const questions = [{
-      question: "Какого цвета бургер?",
-      answers: [{
+  // объект в котором вопросы и ответы
+  const questions = [
+    {
+      question: 'Какого цвета бургер?',
+      answers: [
+        {
           title: 'Стандарт',
-          url: './image/burger.png'
+          url: './image/burger.png',
         },
         {
           title: 'Черный',
-          url: './image/burgerBlack.png'
-        }
+          url: './image/burgerBlack.png',
+        },
       ],
-      type: 'radio'
+      type: 'radio',
     },
     {
-      question: "Из какого мяса котлета?",
-      answers: [{
+      question: 'Из какого мяса котлета?',
+      answers: [
+        {
           title: 'Курица',
-          url: './image/chickenMeat.png'
+          url: './image/chickenMeat.png',
         },
         {
           title: 'Говядина',
-          url: './image/beefMeat.png'
+          url: './image/beefMeat.png',
         },
         {
           title: 'Свинина',
-          url: './image/porkMeat.png'
-        }
+          url: './image/porkMeat.png',
+        },
       ],
-      type: 'radio'
+      type: 'radio',
     },
     {
-      question: "Дополнительные ингредиенты?",
-      answers: [{
+      question: 'Дополнительные ингредиенты?',
+      answers: [
+        {
           title: 'Помидор',
-          url: './image/tomato.png'
+          url: './image/tomato.png',
         },
         {
           title: 'Огурец',
-          url: './image/cucumber.png'
+          url: './image/cucumber.png',
         },
         {
           title: 'Салат',
-          url: './image/salad.png'
+          url: './image/salad.png',
         },
         {
           title: 'Лук',
-          url: './image/onion.png'
-        }
+          url: './image/onion.png',
+        },
       ],
-      type: 'checkbox'
+      type: 'checkbox',
     },
     {
-      question: "Добавить соус?",
-      answers: [{
+      question: 'Добавить соус?',
+      answers: [
+        {
           title: 'Чесночный',
-          url: './image/sauce1.png'
+          url: './image/sauce1.png',
         },
         {
           title: 'Томатный',
-          url: './image/sauce2.png'
+          url: './image/sauce2.png',
         },
         {
           title: 'Горчичный',
-          url: './image/sauce3.png'
-        }
+          url: './image/sauce3.png',
+        },
       ],
-      type: 'radio'
-    }
+      type: 'radio',
+    },
   ];
+
+  // анимация на появление модалки
+  let count = -100;
+  // чтобы остановить анимацию используется clearInterval (через переменную).
+
+  // убираем моргание при вызове модалки (тюкю начальное значение top: 0;)
+  modalDialog.style.top = count + '%';
+  const animateModal = () => {
+    modalDialog.style.top = count + '%';
+    count += 7;
+
+    if (count < 0) {
+      requestAnimationFrame(animateModal);
+    } else {
+      count = -100;
+    }
+
+    // if (count >= 0) {
+    //   clearInterval(interval);
+
+    //   // count на -100 чтоб не приходилось перезагружать окно
+    //   count = -100;
+    // }
+  };
 
   // переменная которая бедет получать ширину экрана клиента
   let clientWidth = document.documentElement.clientWidth;
 
   if (clientWidth < 768) {
-    burgerBtn.style.display = "flex";
+    burgerBtn.style.display = 'flex';
   } else {
-    burgerBtn.style.display = "none";
+    burgerBtn.style.display = 'none';
   }
 
   //навешиваем обработчик событий на window
-  window.addEventListener("resize", function () {
+  window.addEventListener('resize', function () {
     clientWidth = document.documentElement.clientWidth;
 
     // при ширене окна у клиента меньше 768px появляется бургер меню
     if (clientWidth < 768) {
-      burgerBtn.style.display = "flex";
+      burgerBtn.style.display = 'flex';
     } else {
-      burgerBtn.style.display = "none";
+      burgerBtn.style.display = 'none';
     }
   });
 
-  burgerBtn.addEventListener("click", function () {
-    modalBlock.classList.add("d-block"); // d-block - display: block.
+  burgerBtn.addEventListener('click', function () {
+    modalBlock.classList.add('d-block'); // d-block - display: block.
     playTest();
   });
 
-  btnOpenModal.addEventListener("click", () => {
-    modalBlock.classList.add("d-block"); // d-block - display: block.
+  // обработчики открытия/закрытия модалки
+  btnOpenModal.addEventListener('click', () => {
+    requestAnimationFrame(animateModal); // меньше грузит браузер чем setInterval
+    // interval = setInterval(animateModal, 5);
+    modalBlock.classList.add('d-block'); // d-block - display: block.
     playTest();
   });
 
-  closeModal.addEventListener("click", () => {
-    modalBlock.classList.remove("d-block");
+  closeModal.addEventListener('click', () => {
+    modalBlock.classList.remove('d-block');
   });
 
   // при клике вне модального окна модалка закрывается (делегирование)
-  document.addEventListener("click", function (event) {
+  document.addEventListener('click', function (event) {
     if (
-      !event.target.closest(".modal-dialog") &&
-      !event.target.closest(".openModalButton") &&
-      !event.target.closest(".burger")
+      !event.target.closest('.modal-dialog') &&
+      !event.target.closest('.openModalButton') &&
+      !event.target.closest('.burger')
     ) {
-      modalBlock.classList.remove("d-block");
+      modalBlock.classList.remove('d-block');
     }
   });
 
+  // запуск текста
   const playTest = () => {
     let numberQuestion = 0;
 
-    const renderAnswers = (index) => {
+    // рендерим отвуты
+    const renderAnswers = index => {
+      questions[index].answers.forEach(answer => {
+        const answerItem = document.createElement('div');
 
-      questions[index].answers.forEach((answer) => {
-        const answerItem = document.createElement("div");
-
-        answerItem.classList.add("answers-item", "d-flex", "flex-column");
+        answerItem.classList.add('answers-item', 'd-flex', 'flex-column');
 
         answerItem.innerHTML = `
           <input type = "${questions[index].type}"
@@ -150,34 +186,36 @@ document.addEventListener("DOMContentLoaded", function () {
           </label>
         `;
 
-        if (numberQuestion === 0) {
-          prevButton.style.display = "none";
-        } else {
-          prevButton.style.display = "inline-block";
-        };
-
-        if ((questions.length - 1) == numberQuestion) {
-          nextButton.style.display = "none";
-        } else {
-          nextButton.style.display = "inline-block";
-        };
-
         // console.log(questions[index].type);
         formAnswers.appendChild(answerItem);
       });
     };
 
-    const renderQuestions = (indexQuestion) => {
-      formAnswers.innerHTML = "";
+    // функция рендеринга вопросов + ответов
+    const renderQuestions = indexQuestion => {
+      formAnswers.innerHTML = '';
 
-      questionTitle.textContent = `${questions[indexQuestion].question}`;
+      // if (numberQuestion === 0) {
+      //   prevButton.style.display = 'none';
+      // } else {
+      //   prevButton.style.display = 'inline-block';
+      // }
 
-      renderAnswers(indexQuestion);
+      // if (questions.length - 1 == numberQuestion) {
+      //   nextButton.style.display = 'none';
+      // } else {
+      //   nextButton.style.display = 'inline-block';
+      // }
+
+      if (numberQuestion >= 0 && numberQuestion <= questions.length - 1) {
+        questionTitle.textContent = `${questions[indexQuestion].question}`;
+
+        renderAnswers(indexQuestion);
+      }
     };
 
+    // запуск рендеринга
     renderQuestions(numberQuestion);
-
-
 
     // на onclick обработчик вешается только раз при клике, а при addEventListener при каждом клике  плюсуется
     nextButton.onclick = () => {
