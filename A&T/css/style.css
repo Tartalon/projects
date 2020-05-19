@@ -32,7 +32,7 @@ body {
   font-style: normal;
 }
 
-.section-product {
+.section__product {
   width: 100%;
   padding: 100px 0;
 }
@@ -44,7 +44,7 @@ body {
   padding: 0 10px;
 }
 
-.products {
+.products__list {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -60,6 +60,7 @@ body {
   position: relative;
   overflow: hidden;
   transition: all 0.2s linear;
+  margin-bottom: 30px;
 }
 
 .card:hover {
@@ -162,4 +163,26 @@ body {
   color: #000;
   text-transform: uppercase;
   font-size: 12px;
+}
+
+@media only screen and (max-width: 1270px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .container {
+    max-width: 700px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    max-width: 400px;
+  }
+
+  .products__list {
+    justify-content: center;
+  }
 }
