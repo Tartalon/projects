@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const modalDialog = document.querySelector('.modal-dialog');
   const sendButton = document.getElementById('send');
 
+  const modalTitle = document.querySelector('.modal-title');
+
   // объект в котором вопросы и ответы
   const questions = [
     {
@@ -167,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const playTest = () => {
     //объект куда будут складываться ответы
     const finelAnswers = [];
+    const obj = {};
 
     let numberQuestion = 0;
 
@@ -229,6 +232,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (numberQuestion === questions.length) {
+        questionTitle.textContent = '';
+        modalTitle.textContent = '';
+
         nextButton.classList.add('d-none');
         prevButton.classList.add('d-none');
         sendButton.classList.remove('d-none');
@@ -243,6 +249,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (numberQuestion === questions.length + 1) {
         formAnswers.textContent = 'Спасибо за пройденный тест!';
+
+        for (let key in obj) {
+          // console.log(key, obj[key]);
+          let newObj = {};
+          newObj[key] = obj[key];
+          finelAnswers.push(newObj);
+        }
+
         setTimeout(() => {
           modalBlock.classList.remove('d-block');
         }, 2000);
@@ -253,7 +267,6 @@ document.addEventListener('DOMContentLoaded', function () {
     renderQuestions(numberQuestion);
 
     const checkAnswer = () => {
-      const obj = {};
       const inputs = [...formAnswers.elements].filter(
         input => input.checked || input.id === 'numberPhone'
       );
@@ -269,8 +282,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
-      finelAnswers.push(obj);
-      console.log(finelAnswers);
+      // console.log(finelAnswers);
+      // console.log(obj);
     };
 
     // на onclick обработчик вешается только раз при клике, а при addEventListener при каждом клике  плюсуется
@@ -288,6 +301,7 @@ document.addEventListener('DOMContentLoaded', function () {
       checkAnswer();
       numberQuestion++;
       renderQuestions(numberQuestion);
+      console.log(finelAnswers);
     };
   };
 });
