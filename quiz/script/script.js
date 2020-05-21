@@ -172,6 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const obj = {};
 
     let numberQuestion = 0;
+    modalTitle.textContent = 'Ответь на вопрос:';
 
     // рендерим отвуты
     const renderAnswers = index => {
@@ -223,12 +224,14 @@ document.addEventListener('DOMContentLoaded', function () {
         renderAnswers(indexQuestion);
 
         nextButton.classList.remove('d-none');
-        prevButton.classList.remove('d-none');
+        // prevButton.classList.remove('d-none');
+        prevButton.disabled = false;
         sendButton.classList.add('d-none');
       }
 
       if (numberQuestion === 0) {
-        prevButton.classList.add('d-none');
+        // prevButton.classList.add('d-none');
+        prevButton.disabled = true;
       }
 
       if (numberQuestion === questions.length) {
@@ -236,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
         modalTitle.textContent = '';
 
         nextButton.classList.add('d-none');
-        prevButton.classList.add('d-none');
+        // prevButton.classList.add('d-none');
         sendButton.classList.remove('d-none');
 
         formAnswers.innerHTML = `
@@ -245,10 +248,18 @@ document.addEventListener('DOMContentLoaded', function () {
           <input type="phone" class="form-control" id="numberPhone">
         </div>
         `;
+
+        // проверка на цифры в поле телефона
+        const numberPhone = document.getElementById('numberPhone');
+        numberPhone.addEventListener('input', event => {
+          event.target.value = event.target.value.replace(/[^0-9+-]/, '');
+        });
       }
 
       if (numberQuestion === questions.length + 1) {
         formAnswers.textContent = 'Спасибо за пройденный тест!';
+        sendButton.classList.add('d-none');
+        prevButton.classList.add('d-none');
 
         for (let key in obj) {
           // console.log(key, obj[key]);
