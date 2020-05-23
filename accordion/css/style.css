@@ -1,0 +1,38 @@
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.accordion {
+  width: 100%;
+  background-color: whitesmoke;
+  border: none;
+  outline: none;
+  text-align: left;
+  padding: 15px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordion:hover {
+  background-color: #ddd;
+}
+
+.accordion::after {
+  content: "+";
+}
+
+.accordion.is-open::after {
+  content: "-";
+}
+
+.accordion-content {
+  padding: 0 20px;
+  border-left: 1px solid whitesmoke;
+  border-right: 1px solid whitesmoke;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease-in-out;
+}
