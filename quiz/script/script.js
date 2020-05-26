@@ -16,6 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const modalTitle = document.querySelector('.modal-title');
 
+  //функция получения данных со стороннего сервера  (файла)
+  const getData = () => {
+    formAnswers.textContent = 'LOAD';
+
+    setTimeout(() => {
+      playTest();
+    }, 2000);
+  };
+
   // объект в котором вопросы и ответы
   const questions = [
     {
@@ -147,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
     requestAnimationFrame(animateModal); // меньше грузит браузер чем setInterval
     // interval = setInterval(animateModal, 5);
     modalBlock.classList.add('d-block'); // d-block - display: block.
-    playTest();
+    getData();
   });
 
   closeModal.addEventListener('click', () => {
@@ -280,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const checkAnswer = () => {
       const inputs = [...formAnswers.elements].filter(
         input => input.checked || input.id === 'numberPhone'
-      );
+      ); // ... - spread (rest) оператор
       // console.log(inputs);
 
       inputs.forEach((input, index) => {
