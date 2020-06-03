@@ -17,23 +17,21 @@ const leftMenu = document.querySelector(".left-menu");
 const hamburger = document.querySelector(".hamburger");
 const tvShowsList = document.querySelector(".tv-shows__list");
 // const tvCardVote = document.querySelector(".tv-card__vote");
-const modal = document.querySelector(".modal");
-const tvShows = document.querySelector(".tv-shows");
-const tvCardImg = document.querySelector(".tv-card__img");
-const modalTitle = document.querySelector(".modal__title");
-const genresList = document.querySelector(".genres-list");
-const rating = document.querySelector(".rating");
-const description = document.querySelector(".description");
-const modalLink = document.querySelector(".modal__link");
-const searchForm = document.querySelector(".search__form");
-const searchFormInput = document.querySelector(".search__form-input");
-const preloader = document.querySelector(".preloader");
-const dropdown = document.querySelectorAll(".dropdown");
-const tvShowsHead = document.querySelector(".tv-shows__head");
-const posterWrapper = document.querySelector(".poster__wrapper");
+const modal = document.querySelector('.modal');
+const tvShows = document.querySelector('.tv-shows');
+const tvCardImg = document.querySelector('.tv-card__img');
+const modalTitle = document.querySelector('.modal__title');
+const genresList = document.querySelector('.genres-list');
+const rating = document.querySelector('.rating');
+const description = document.querySelector('.description');
+const modalLink = document.querySelector('.modal__link');
+const searchForm = document.querySelector('.search__form');
+const searchFormInput = document.querySelector('.search__form-input');
+const preloader = document.querySelector('.preloader');
+const dropdown = document.querySelectorAll('.dropdown');
 
-const loading = document.createElement("div");
-loading.className = "loading";
+const loading = document.createElement('div');
+loading.className = 'loading';
 
 // классы; запрос на сервер
 class DBService {
@@ -65,10 +63,10 @@ class DBService {
     // );
     return this.getData(
       this.SERVER +
-        "search/tv?api_key=" +
-        this.API_KEY +
-        "&language=ru-RU&query=" +
-        query
+      "search/tv?api_key=" +
+      this.API_KEY +
+      "&language=ru-RU&query=" +
+      query
     );
   };
 
@@ -151,21 +149,21 @@ searchForm.addEventListener("submit", (event) => {
 //открытие/закрытие меню
 
 const closeDropdown = () => {
-  dropdown.forEach((item) => {
-    item.classList.remove("active");
+  dropdown.forEach(item => {
+    item.classList.remove('active');
   });
 };
 
-hamburger.addEventListener("click", () => {
-  leftMenu.classList.toggle("openMenu");
-  hamburger.classList.toggle("open");
+hamburger.addEventListener('click', () => {
+  leftMenu.classList.toggle('openMenu');
+  hamburger.classList.toggle('open');
   closeDropdown();
 });
 
-document.addEventListener("click", (event) => {
-  if (!event.target.closest(".left-menu")) {
-    leftMenu.classList.remove("openMenu");
-    hamburger.classList.remove("open");
+document.addEventListener('click', event => {
+  if (!event.target.closest('.left-menu')) {
+    leftMenu.classList.remove('openMenu');
+    hamburger.classList.remove('open');
     closeDropdown();
   }
 });
@@ -193,35 +191,43 @@ tvShowsList.addEventListener("click", (event) => {
     preloader.style.display = "block";
 
     // console.log(card);
+
+    preloader.style.display = 'block';
+
     new DBService()
       .getTvShow(card.id)
-      .then((data) => {
-        // console.log(data);
-
-        tvCardImg.src = IMG_URL + data.poster_path;
-        tvCardImg.alt = data.name;
-        modalTitle.textContent = data.name;
-        // genresList.innerHTML = data.genres.reduce((acc, item) => `${acc}<li>${item.name}</li>`, '');
-
-        // genresList.textContent = '';
-        // for (const item of data.genres) {
-        //   genresList.innerHTML += `<li>${item.name}</li>`;
-        // }
-
-        genresList.textContent = "";
-        data.genres.forEach((item) => {
-          genresList.innerHTML += `<li>${item.name}</li>`;
-        });
-        rating.textContent = data.vote_average;
-        description.textContent = data.overview;
-        modalLink.href = data.homepage;
+      .then(
+        ({
+          // console.log(data);
+          poster_path: posterPath,
+          name: title,
+          genres,
+          vote_average: voteAverage,
+          overview,
+          homepage,
+        }) => {
+          tvCardImg.src = IMG_URL + posterPath;
+          modalTitle.textContent = title;
+          // genresList.innerHTML = data.genres.reduce((acc, item) => `${acc}<li>${item.name}</li>`, '');
+          // genresList.textContent = '';
+          // for (const item of data.genres) {
+          //   genresList.innerHTML += `<li>${item.name}</li>`;
+          // }
+          genresList.textContent = '';
+          genres.forEach(item => {
+            genresList.innerHTML += `<li>${item.name}</li>`;
+          });
+          rating.textContent = voteAverage;
+          description.textContent = overview;
+          modalLink.href = homepage;
+        }
+      )
+      .then(() => {
+        document.body.style.overflow = 'hidden'; //отключили скрол бади
+        modal.classList.remove('hide');
       })
       .then(() => {
-        document.body.style.overflow = "hidden"; //отключили скрол бади
-        modal.classList.remove("hide");
-      })
-      .then(() => {
-        preloader.style.display = "";
+        preloader.style.display = '';
       });
   }
 });
