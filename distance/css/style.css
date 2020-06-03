@@ -7,11 +7,12 @@ a {
 }
 
 body {
+  background: #e5e5e5;
   font-family: sans-serif;
 }
 
 .header {
-  background: #0050B3;
+  background: #0050b3;
   padding: 6px 0;
 }
 
@@ -31,7 +32,7 @@ body {
 .search-input {
   width: 100%;
   font-size: 14px;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #d9d9d9;
   border-radius: 4px;
   padding: 5px 30px 5px 12px;
   background-image: url('../img/search-icon.svg');
@@ -63,8 +64,111 @@ body {
 
 .navigation__panel {
   display: flex;
+  align-items: center;
+  margin-right: 28px;
 }
 
 .navigation__link {
+  position: relative;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
   color: #fff;
+}
+
+.navigation__link:not(:last-child) {
+  margin-right: 25px;
+}
+
+.navigation__link::before {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 16px;
+  background: #003a8c;
+  top: 0;
+  left: -12px;
+}
+
+.navigation__link:last-child::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 16px;
+  background: #003a8c;
+  top: 0;
+  right: -12px;
+}
+
+.icons-panel {
+  display: flex;
+  align-items: center;
+}
+
+.icon__link {
+  display: flex;
+  align-items: center;
+  margin-right: 17px;
+}
+
+.icon__link:last-child::before {
+  content: '';
+  width: 1px;
+  height: 16px;
+  background: #003a8c;
+  margin-right: 12px;
+}
+
+.header__icon {
+  fill: #002766;
+}
+
+.header__icon:hover {
+  fill: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-sidebar {
+  max-width: 192px;
+}
+
+.menu-sidebar .user__avatar {
+  width: 24px;
+  height: 24px;
+}
+
+.menu-sidebar .user__name {
+  font-weight: 400;
+  color: #262626;
+}
+
+.nav__group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #595959;
+}
+
+.nav__link.active {
+  background: #fff;
+  font-weight: 600;
+  color: #262626;
+}
+
+.nav__icon {
+  margin-right: 8px;
+  fill: #1890ff;
 }

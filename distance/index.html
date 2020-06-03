@@ -1,39 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-
-  <header class="header">
-    <div class="header-block">
-      <div class="search">
-        <input type="text" class="search-input" placeholder="Search">
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-block">
+        <div class="search">
+          <input type="text" class="search-input" placeholder="Search" />
+        </div>
+        <div class="navigation">
+          <div class="user">
+            <img src="./img/avatar.svg" alt="avatar" class="user__avatar" />
+            <span class="user__name">mateusz</span>
+          </div>
+          <!-- /.user -->
+          <nav class="navigation__panel">
+            <a href="#" class="navigation__link">home</a>
+            <a href="#" class="navigation__link">сreate</a>
+          </nav>
+          <!-- /.navigation-panel -->
+          <div class="icons-panel">
+            <a href="#" class="icon__link">
+              <svg width="20" height="20" class="header__icon">
+                <use xlink:href="./img/icons.svg#users"></use>
+              </svg>
+            </a>
+            <a href="#" class="icon__link">
+              <svg width="22" height="22" class="header__icon">
+                <use xlink:href="./img/icons.svg#chat"></use>
+              </svg>
+            </a>
+            <a href="#" class="icon__link">
+              <svg class="header__icon" width="16" height="22">
+                <use xlink:href="./img/icons.svg#bell"></use>
+              </svg>
+            </a>
+            <a href="#" class="icon__link">
+              <svg class="header__icon" width="22" height="22">
+                <use xlink:href="./img/icons.svg#info"></use>
+              </svg>
+            </a>
+          </div>
+          <!-- /.icons-panel -->
+        </div>
+        <!-- /.navigation -->
       </div>
-      <div class="navigation">
+      <!-- /.header-block -->
+    </header>
+    <!-- /.header -->
+
+    <div class="container">
+      <div class="menu-sidebar">
         <div class="user">
-          <img src="./img/avatar.svg" alt="avatar" class="user__avatar">
-          <span class="user__name">mateusz</span>
+          <img src="./img/avatar.svg" alt="avatar" class="user__avatar" />
+          <span class="user__name">Mateusz Wierzbicki</span>
         </div>
         <!-- /.user -->
-        <div class="navigation__panel">
-          <a href="#" class="navigation__link">home</a>
-          <a href="#" class="navigation__link">сreate</a>
-        </div>
-        <!-- /.navigation-panel -->
-        <div class="icons-panel"></div>
-        <!-- /.icons-panel -->
+        <nav class="nav__group">
+          <a href="#" class="nav__link active">
+            <svg width="20" height="20" class="nav__icon">
+              <use xlink:href="./img/icons.svg#news"></use>
+            </svg>
+            <span class="nav__text">News Feed</span>
+          </a>
+          <a href="#" class="nav__link">
+            <svg width="24" height="24" class="nav__icon">
+              <use xlink:href="./img/icons.svg#chat"></use>
+            </svg>
+            <span class="nav__text">Messages</span>
+          </a>
+          <a href="#" class="nav__link">
+            <svg width="20" height="20" class="nav__icon">
+              <use xlink:href="./img/icons.svg#market"></use>
+            </svg>
+            <span class="nav__text">Marketplace</span>
+          </a>
+        </nav>
+        <!-- /.nav-group -->
       </div>
-      <!-- /.navigation -->
+      <!-- /.menu-sidebar -->
     </div>
-    <!-- /.header-block -->
-  </header>
-  <!-- /.header -->
+    <!-- /.container -->
 
     <script src="./script/script.js"></script>
-</body>
+  </body>
 </html>
