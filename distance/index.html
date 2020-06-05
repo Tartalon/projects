@@ -1,92 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="header-block">
-        <div class="search">
-          <input type="text" class="search-input" placeholder="Search" />
-        </div>
-        <div class="navigation">
-          <div class="user">
-            <img src="./img/avatar.svg" alt="avatar" class="user__avatar" />
-            <span class="user__name">mateusz</span>
-          </div>
-          <!-- /.user -->
-          <nav class="navigation__panel">
-            <a href="#" class="navigation__link">home</a>
-            <a href="#" class="navigation__link">сreate</a>
-          </nav>
-          <!-- /.navigation-panel -->
-          <div class="icons-panel">
-            <a href="#" class="icon__link">
-              <svg width="20" height="20" class="header__icon">
-                <use xlink:href="./img/icons.svg#users"></use>
-              </svg>
-            </a>
-            <a href="#" class="icon__link">
-              <svg width="22" height="22" class="header__icon">
-                <use xlink:href="./img/icons.svg#chat"></use>
-              </svg>
-            </a>
-            <a href="#" class="icon__link">
-              <svg class="header__icon" width="16" height="22">
-                <use xlink:href="./img/icons.svg#bell"></use>
-              </svg>
-            </a>
-            <a href="#" class="icon__link">
-              <svg class="header__icon" width="22" height="22">
-                <use xlink:href="./img/icons.svg#info"></use>
-              </svg>
-            </a>
-          </div>
-          <!-- /.icons-panel -->
-        </div>
-        <!-- /.navigation -->
-      </div>
-      <!-- /.header-block -->
-    </header>
-    <!-- /.header -->
 
-    <div class="container">
-      <div class="menu-sidebar">
-        <div class="user">
-          <img src="./img/avatar.svg" alt="avatar" class="user__avatar" />
-          <span class="user__name">Mateusz Wierzbicki</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-block">
+      <div class="search">
+        <input type="text" class="search-input" placeholder="Search" />
+      </div>
+      <div class="navigation">
+        <div class="header__user">
+          <img src="./img/avatar.jpg" alt="avatar" class="user__avatar" />
+          <span class="user__name">mateusz</span>
         </div>
         <!-- /.user -->
-        <nav class="nav__group">
-          <a href="#" class="nav__link active">
-            <svg width="20" height="20" class="nav__icon">
-              <use xlink:href="./img/icons.svg#news"></use>
+        <nav class="navigation__panel">
+          <a href="#" class="navigation__link">home</a>
+          <a href="#" class="navigation__link">сreate</a>
+        </nav>
+        <!-- /.navigation-panel -->
+        <div class="icons-panel">
+          <a href="#" class="icon__link">
+            <svg width="20" height="20" class="header__icon">
+              <use xlink:href="./img/icons.svg#users"></use>
             </svg>
-            <span class="nav__text">News Feed</span>
           </a>
-          <a href="#" class="nav__link">
-            <svg width="24" height="24" class="nav__icon">
+          <a href="#" class="icon__link">
+            <svg width="22" height="22" class="header__icon">
               <use xlink:href="./img/icons.svg#chat"></use>
             </svg>
-            <span class="nav__text">Messages</span>
           </a>
-          <a href="#" class="nav__link">
-            <svg width="20" height="20" class="nav__icon">
-              <use xlink:href="./img/icons.svg#market"></use>
+          <a href="#" class="icon__link">
+            <span class="notification">8</span>
+            <svg class="header__icon" width="16" height="22">
+              <use xlink:href="./img/icons.svg#bell"></use>
             </svg>
-            <span class="nav__text">Marketplace</span>
           </a>
-        </nav>
-        <!-- /.nav-group -->
+          <a href="#" class="icon__link">
+            <svg class="header__icon" width="22" height="22">
+              <use xlink:href="./img/icons.svg#info"></use>
+            </svg>
+          </a>
+        </div>
+        <!-- /.icons-panel -->
       </div>
-      <!-- /.menu-sidebar -->
+      <!-- /.navigation -->
     </div>
-    <!-- /.container -->
+    <!-- /.header-block -->
+  </header>
+  <!-- /.header -->
 
-    <script src="./script/script.js"></script>
-  </body>
+  <div class="container">
+    <div class="menu-sidebar">
+      <div class="user">
+        <img src="./img/avatar.jpg" alt="avatar" class="user__avatar" />
+        <span class="user__name">Mateusz Wierzbicki</span>
+      </div>
+      <!-- /.user -->
+      <nav class="nav__group group__news">
+        <a href="#" class="nav__link active">
+          <svg width="20" height="20" class="nav__icon">
+            <use xlink:href="img/icons.svg#news"> </use>
+          </svg>
+          <span class="nav__text">News Feed</span>
+        </a>
+        <a href="#" class="nav__link">
+          <svg width="24" height="24" class="nav__icon">
+            <use xlink:href="img/icons.svg#chat"></use>
+          </svg>
+          <span class="nav__text">Messages</span>
+        </a>
+        <a href="#" class="nav__link">
+          <svg width="20" height="20" class="nav__icon">
+            <use xlink:href="./img/icons.svg#market"></use>
+          </svg>
+          <span class="nav__text">Marketplace</span>
+        </a>
+      </nav>
+      <!-- /.nav-group -->
+
+      <nav class="nav__group shortcuts">
+        <h3 class="nav__title">shortcuts</h3>
+        <a href="#" class="nav__link">
+          <svg width="24" height="24" class="nav__icon">
+            <use xlink:href="./img/icons.svg#shortcuts"></use>
+          </svg>
+          <span class="nav__text">Product Design</span>
+        </a>
+        <!-- /.nav__link -->
+        <a href="#" class="nav__link">
+          <svg width="24" height="24" class="nav__icon">
+            <use xlink:href="./img/icons.svg#shortcuts"></use>
+          </svg>
+          <span class="nav__text">UX & UI</span>
+        </a>
+        <!-- /.nav__link -->
+        <a href="#" class="nav__link">
+          <svg width="24" height="24" class="nav__icon">
+            <use xlink:href="./img/icons.svg#shortcuts"></use>
+          </svg>
+          <span class="nav__text">Figma</span>
+        </a>
+        <!-- /.nav__link -->
+        <a href="#" class="nav__link">
+          <svg width="24" height="24" class="nav__icon">
+            <use xlink:href="./img/icons.svg#shortcuts"></use>
+          </svg>
+          <span class="nav__text">Ant Design</span>
+        </a>
+        <!-- /.nav__link -->
+      </nav>
+      <!-- /.nav__group -->
+      <nav class="nav__group">
+        <h3 class="nav__title">Explore</h3>
+        <a href="#" class="nav__link">
+          <svg width="24" height="24" class="nav__icon">
+            <use xlink:href="./img/icons.svg#pages"></use>
+          </svg>
+          <span class="nav__text">Pages</span>
+        </a>
+        <!-- /.nav__link -->
+        <a href="#" class="nav__link">
+          <svg width="24" height="24" class="nav__icon">
+            <use xlink:href="./img/icons.svg#ux"></use>
+          </svg>
+          <span class="nav__text">Groups</span>
+        </a>
+        <!-- /.nav__link -->
+        <a href="#" class="nav__link">
+          <svg width="24" height="24" class="nav__icon">
+            <use xlink:href="./img/icons.svg#events"></use>
+          </svg>
+          <span class="nav__text">Events</span>
+        </a>
+        <!-- /.nav__link -->
+        <a href="#" class="nav__link">
+          <svg width="24" height="24" class="nav__icon">
+            <use xlink:href="./img/icons.svg#games"></use>
+          </svg>
+          <span class="nav__text">Games</span>
+        </a>
+        <!-- /.nav__link -->
+      </nav>
+      <!-- /.nav__group -->
+    </div>
+    <!-- /.menu-sidebar -->
+
+    <div class="maine-feed">
+      <div class="create-post">
+        <div class="create-post__header">
+          <h4 class="create-post__title">Create post</h4>
+        </div>
+        <!-- /.header -->
+        <div class="create-post__body">
+          <img src="./img/avatar.jpg" alt="avatar" class="user__avatar">
+          <div class="create-post__input" contenteditable="true">What’s on your mind, Mateusz?</div>
+        </div>
+        <!-- /.body -->
+        <div class="create-post__footer">
+          <button class="tag">
+            <svg width="24" height="24" class="create-post__icon">
+              <use xlink:href="./img/icons.svg#photo"></use>
+            </svg>
+            <span class="button__text">Photo/Video</span>
+          </button>
+          <button class="tag">
+            <svg width="24" height="24" class="create-post__icon">
+              <use xlink:href="./img/icons.svg#friends"></use>
+            </svg>
+            <span class="button__text">Tag friends</span>
+          </button>
+          <button class="tag">
+            <svg width="24" height="24" class="create-post__icon">
+              <use xlink:href="./img/icons.svg#feeling"></use>
+            </svg>
+            <span class="button__text">Feeling/Activ...</span>
+          </button>
+          <button class="tag">
+            <span class="button__text">...</span>
+          </button>
+        </div>
+        <!-- /.footer -->
+      </div>
+      <!-- /.create-post -->
+
+      <div class="post">
+        <div class="post__header">
+
+        </div>
+        <!-- /.post__header -->
+        <div class="post__content"></div>
+        <!-- /.post__content -->
+        <div class="likes"></div>
+        <!-- /.likes -->
+        <div class="post__footer"></div>
+        <!-- /.post__footer -->
+      </div>
+    </div>
+    <!-- /.maine-feed -->
+  </div>
+  <!-- /.container -->
+
+
+  <script src="./script/script.js"></script>
+</body>
+
 </html>
