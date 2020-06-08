@@ -193,14 +193,51 @@
 
       <div class="post">
         <div class="post__header">
-
+          <img src="./img/avatar.jpg" alt="avatar" class="post__avatar">
+          <div class="post__info">
+            <h4 class="post__author">mateusz werzbicki</h4>
+            <span class="post__time">3 hrs</span>
+            <svg width="14" height="14" class="setting__icon">
+              <use xlink:href="./img/icons.svg#setting"></use>
+            </svg>
+          </div>
         </div>
         <!-- /.post__header -->
-        <div class="post__content"></div>
+        <div class="post__content">
+          <p class="post__text">Did you know that all of this was made using only components and styles from Ant Desing
+            System for Figma?
+            Learn more: https://antforfigma.com
+          </p>
+          <img src="./img/post_img.jpg" alt="figma" class="post__img">
+        </div>
         <!-- /.post__content -->
-        <div class="likes"></div>
+        <div class="likes">
+          <svg width="16" height="16" class="likes__icon">
+            <use xlink:href="./img/icons.svg#like"></use>
+          </svg>
+          <span class="likes__counter">23</span>
+        </div>
         <!-- /.likes -->
-        <div class="post__footer"></div>
+        <div class="post__footer">
+          <button class="post__button">
+            <svg width="19" height="19" class="likes__icon footer__likes">
+              <use xlink:href="./img/icons.svg#like"></use>
+            </svg>
+            <span class="post__button-text">Like</span>
+          </button>
+          <button class="post__button">
+            <svg width="24" height="24" class="post-footer__icon">
+              <use xlink:href="./img/icons.svg#chat"></use>
+            </svg>
+            <span class="post__button-text">Comment</span>
+          </button>
+          <button class="post__button">
+            <svg width="24" height="24" class="post-footer__icon">
+              <use xlink:href="./img/icons.svg#share"></use>
+            </svg>
+            <span class="post__button-text">Share</span>
+          </button>
+        </div>
         <!-- /.post__footer -->
       </div>
     </div>

@@ -49,11 +49,6 @@ body {
 .header__user {
   display: flex;
   align-items: center;
-}
-
-.user {
-  display: flex;
-  align-items: center;
   margin-right: 25px;
 }
 
@@ -119,7 +114,7 @@ body {
   display: flex;
   align-items: center;
   margin-right: 17px;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
   position: relative;
 }
 
@@ -127,8 +122,8 @@ body {
   position: absolute;
   width: 17px;
   height: 17px;
-  background: #F5222D;
-  border: 1px solid #FFFFFF;
+  background: #f5222d;
+  border: 1px solid #ffffff;
   border-radius: 16px;
   display: flex;
   justify-content: center;
@@ -206,7 +201,7 @@ body {
 
 .nav__link:last-child {
   margin-bottom: 0;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
 
 .nav__link.active {
@@ -242,10 +237,11 @@ body {
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   overflow: hidden;
+  margin-bottom: 16px;
 }
 
 .create-post__header {
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
 
 .create-post__title {
@@ -266,15 +262,15 @@ body {
   padding: 16px 16px 24px;
   display: flex;
   align-items: flex-start;
-  border-top: 1px solid #D9D9D9;
+  border-top: 1px solid #d9d9d9;
   position: relative;
 }
 
 .create-post__body::after {
-  content: '';
+  content: "";
   width: 90%;
   height: 1px;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   left: 5%;
   bottom: 0;
   position: absolute;
@@ -294,7 +290,7 @@ body {
 }
 
 .tag {
-  background: #F5F5F5;
+  background: #f5f5f5;
   border-radius: 48px;
   border: none;
   padding: 9px 12px;
@@ -314,4 +310,67 @@ body {
 
 .create-post__icon {
   margin-right: 8px;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.post__header {
+  display: flex;
+  padding: 16px;
+}
+
+.post__avatar {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.post__author {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 22px;
+  color: #0050b3;
+  margin: 0;
+}
+
+.post__time {
+  font-size: 14px;
+  line-height: 22px;
+  color: #8c8c8c;
+}
+
+.post__time::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background-color: #bfbfbf;
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.likes__icon {
+  fill: #1890ff;
+}
+
+.footer__likes {
+  fill: #000;
+}
+
+.post__footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.post__button {
+  background-color: #fff;
+  border: none;
 }
