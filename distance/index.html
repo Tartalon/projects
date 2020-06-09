@@ -206,8 +206,10 @@
         <div class="post__content">
           <p class="post__text">Did you know that all of this was made using only components and styles from Ant Desing
             System for Figma?
-            Learn more: https://antforfigma.com
           </p>
+          <span class="post__text--span">Learn more: 
+            <a class="post__text--link" href="https://antforfigma.com" target="_blank">https://antforfigma.com</a>
+          </span>
           <img src="./img/post_img.jpg" alt="figma" class="post__img">
         </div>
         <!-- /.post__content -->
@@ -220,7 +222,7 @@
         <!-- /.likes -->
         <div class="post__footer">
           <button class="post__button">
-            <svg width="19" height="19" class="likes__icon footer__likes">
+            <svg width="19" height="19" class="post-footer__icon footer__likes">
               <use xlink:href="./img/icons.svg#like"></use>
             </svg>
             <span class="post__button-text">Like</span>
@@ -236,6 +238,29 @@
               <use xlink:href="./img/icons.svg#share"></use>
             </svg>
             <span class="post__button-text">Share</span>
+            <div class="modal">
+              <ul class="modal__list">
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Share Now (Only me)</a>
+                </li>
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Share...</a>
+                </li>
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Send as Message</a>
+                </li>
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Share in a group</a>
+                </li>
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Share on a Friend’s</a>
+                </li>
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Share to a Page</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.modal -->
           </button>
         </div>
         <!-- /.post__footer -->
