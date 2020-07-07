@@ -196,18 +196,22 @@
           <img src="./img/avatar.jpg" alt="avatar" class="post__avatar">
           <div class="post__info">
             <h4 class="post__author">mateusz werzbicki</h4>
-            <span class="post__time">3 hrs</span>
-            <svg width="14" height="14" class="setting__icon">
-              <use xlink:href="./img/icons.svg#setting"></use>
-            </svg>
+            <div class="post__time-wrapper">
+              <span class="post__time">3 hrs</span>
+              <svg width="14" height="14" class="setting__icon">
+                <use xlink:href="./img/icons.svg#setting"></use>
+              </svg>
+            </div>
           </div>
         </div>
         <!-- /.post__header -->
         <div class="post__content">
           <p class="post__text">Did you know that all of this was made using only components and styles from Ant Desing
             System for Figma?
-            Learn more: https://antforfigma.com
           </p>
+          <span class="post__text--span">Learn more: 
+            <a class="post__text--link" href="https://antforfigma.com" target="_blank">https://antforfigma.com</a>
+          </span>
           <img src="./img/post_img.jpg" alt="figma" class="post__img">
         </div>
         <!-- /.post__content -->
@@ -220,7 +224,7 @@
         <!-- /.likes -->
         <div class="post__footer">
           <button class="post__button">
-            <svg width="19" height="19" class="likes__icon footer__likes">
+            <svg width="19" height="19" class="post-footer__icon footer__likes">
               <use xlink:href="./img/icons.svg#like"></use>
             </svg>
             <span class="post__button-text">Like</span>
@@ -231,17 +235,110 @@
             </svg>
             <span class="post__button-text">Comment</span>
           </button>
-          <button class="post__button">
+          <button class="post__button button-share">
             <svg width="24" height="24" class="post-footer__icon">
               <use xlink:href="./img/icons.svg#share"></use>
             </svg>
             <span class="post__button-text">Share</span>
+            <div class="modal">
+              <ul class="modal__list">
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Share Now (Only me)</a>
+                </li>
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Share...</a>
+                </li>
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Send as Message</a>
+                </li>
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Share in a group</a>
+                </li>
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Share on a Friend’s</a>
+                </li>
+                <li class="modal__item">
+                  <a href="#" class="modal__link">Share to a Page</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.modal -->
           </button>
         </div>
         <!-- /.post__footer -->
       </div>
+
+      <div class="post">
+        <div class="post__header">
+          <img src="./img/figma.jpg" alt="avatar" class="post__avatar">
+          <div class="post__info">
+            <h4 class="post__author">Figma</h4>
+            <div class="post__time-wrapper">
+              <span class="post__time">6 hrs</span>
+              <svg width="14" height="14" class="setting__icon">
+                <use xlink:href="./img/icons.svg#setting"></use>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- /.post__header -->
+        <div class="post__content">
+          <p class="post__text">📙 Want to implement type in your design system in Figma? This guide covers everything you should consider, from choosing the right typography scale to naming and organizing your text styles.
+          </p>
+        </div>
+        <!-- /.post__content -->
+      </div>
+      <!-- /.post -->
     </div>
     <!-- /.maine-feed -->
+
+    <div class="sidebar">
+      <div class="sidebar__stories">
+        <div class="stories__header">
+          <h4 class="stories__title title">Stories</h4>
+          <div class="stories__settings">
+            <svg width="16" height="16" class="create-post__icon">
+              <use xlink:href="./img/icons.svg#clock"></use>
+            </svg>
+            <span class="stories__settings-span first-span">
+              Archive
+            </span>
+            <span class="stories__settings-span">
+              Settings
+            </span>
+          </div>
+          <!-- /.stories__settings -->
+        </div>
+        <!-- /.stories__header -->
+        <nav class="stories__menu">
+          <ul class="stories__list">
+            <li class="stories__item">
+              <a href="" class="stories__link">
+
+              </a>
+            </li>
+            <li class="stories__item">
+              <a href="" class="stories__link">
+
+              </a>
+            </li>
+            <li class="stories__item">
+              <a href="" class="stories__link">
+
+              </a>
+            </li>
+            <li class="stories__item">
+              <a href="" class="stories__link">
+
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- /.sidebar__stories -->
+    </div>
+    <!-- /.sidebar -->
+
   </div>
   <!-- /.container -->
 
