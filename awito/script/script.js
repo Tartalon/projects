@@ -7,7 +7,7 @@ const modalAdd = document.querySelector(".modal__add"),
   catalog = document.querySelector(".catalog"),
   modalItem = document.querySelector(".modal__item ");
 
-// Get form elements without button
+// Get form elements without button in arr
 const elementsModalSubmit = [...modalSubmit.elements].filter(
   (elem) => elem.tagName !== "BUTTON"
 );
