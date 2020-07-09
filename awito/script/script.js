@@ -8,11 +8,18 @@ const modalAdd = document.querySelector(".modal__add"),
   modalSubmit = document.querySelector(".modal__submit"),
   catalog = document.querySelector(".catalog"),
   modalItem = document.querySelector(".modal__item "),
-  modalBtnWarning = document.querySelector('.modal__btn-warning');
+  modalBtnWarning = document.querySelector(".modal__btn-warning");
+
+const checkForm = () => {
+  const validForm = elementsModalSubmit.every((elem) => elem.value);
+  modalBtnSubmit.disabled = !validForm;
+  modalBtnWarning.style.display = validForm ? "none" : "";
+};
 
 // Get form elements without button in arr
-const elementsModalSubmit = [...modalSubmit.elements]
-  .filter(elem => elem.tagName !== "BUTTON" && elem.type !=='submit');
+const elementsModalSubmit = [...modalSubmit.elements].filter(
+  (elem) => elem.tagName !== "BUTTON" && elem.type !== "submit"
+);
 // console.log(
 //   [...elementsModalSubmit].filter((elem) => {
 //     return elem.tagName !== "BUTTON";
@@ -35,38 +42,29 @@ const elementsModalSubmit = [...modalSubmit.elements]
 //   }
 // };
 
-
-//Function close modal on click
+//Function close modal
 const closeModal = function (event) {
   const target = event.target;
   // console.log(this);
   // console.log(target);
 
-  if (target.classList.contains("modal__close") || target === this) {
-    this.classList.add("hide");
-    if (this === modalAdd) {
-      modalSubmit.reset();
-    }
-  }
-};
-
-// Function close modal on Escape
-const closeModalEsc = (event) => {
-  if (event.code === "Escape") {
-    modalItem.classList.add("hide");
+  if (
+    target.closest(".modal__close") ||
+    target.classList.contains("modal") ||
+    event.code === "Escape"
+  ) {
     modalAdd.classList.add("hide");
-    document.removeEventListener("keydown", closeModalEsc);
+    modalItem.classList.add("hide");
+    document.removeEventListener("keydown", closeModal);
+    modalSubmit.reset();
+    checkForm();
   }
 };
 
 //Verification form on value
-modalSubmit.addEventListener('input' , () => {
-  const validForm = elementsModalSubmit.every(elem => elem.value);
-  modalBtnSubmit.disabled = !validForm;
-  modalBtnWarning.style.display = validForm ? "none" : '';
-});
+modalSubmit.addEventListener("input", checkForm);
 
-modalSubmit.addEventListener('submit', event => {
+modalSubmit.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const itemObj = {};
@@ -76,17 +74,15 @@ modalSubmit.addEventListener('submit', event => {
   }
   // console.log(itemObj);
   dataBase.push(itemObj);
-  modalSubmit.reset();
   // console.log(dataBase);
+  closeModal({ target: modalAdd });
 });
-
-
 
 // show modal
 addAd.addEventListener("click", () => {
   modalAdd.classList.remove("hide");
   modalBtnSubmit.disabled = true;
-  document.addEventListener("keydown", closeModalEsc);
+  document.addEventListener("keydown", closeModal);
 });
 
 catalog.addEventListener("click", (event) => {
@@ -94,7 +90,7 @@ catalog.addEventListener("click", (event) => {
 
   if (target.closest(".card")) {
     modalItem.classList.remove("hide");
-    document.addEventListener("keydown", closeModalEsc);
+    document.addEventListener("keydown", closeModal);
   }
 });
 
