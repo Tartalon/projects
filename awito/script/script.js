@@ -38,10 +38,11 @@ const elementsModalSubmit = [...modalSubmit.elements]
 const closeModal = function (event) {
   const target = event.target;
   // console.log(this);
+  // console.log(target);
 
   if (target.classList.contains("modal__close") || target === this) {
     this.classList.add("hide");
-    if (this === modalItem) {
+    if (this === modalAdd) {
       modalSubmit.reset();
     }
   }
@@ -79,15 +80,12 @@ modalSubmit.addEventListener('submit', event => {
 
 
 
-// show modal add card
+// show modal
 addAd.addEventListener("click", () => {
   modalAdd.classList.remove("hide");
   modalBtnSubmit.disabled = true;
   document.addEventListener("keydown", closeModalEsc);
 });
-
-modalAdd.addEventListener("click", closeModal);
-modalItem.addEventListener("click", closeModal);
 
 catalog.addEventListener("click", (event) => {
   const target = event.target;
@@ -98,3 +96,6 @@ catalog.addEventListener("click", (event) => {
   }
 });
 
+//Clos modal
+modalAdd.addEventListener("click", closeModal);
+modalItem.addEventListener("click", closeModal);
