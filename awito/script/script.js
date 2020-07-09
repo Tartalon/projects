@@ -35,6 +35,8 @@ const elementsModalSubmit = [...modalSubmit.elements]
 //   }
 // };
 
+
+//Function close modal on click
 const closeModal = function (event) {
   const target = event.target;
   // console.log(this);
