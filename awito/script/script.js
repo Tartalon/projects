@@ -13,6 +13,10 @@ const modalAdd = document.querySelector(".modal__add"),
   modalFileBtn = document.querySelector('.modal__file-btn'),
   modalImageAdd = document.querySelector('.modal__image-add');
 
+
+  const textFileBtn = modalFileBtn.textContent;
+  const srcModalImage = modalImageAdd.src;
+
 // Get form elements without button in arr
 const elementsModalSubmit = [...modalSubmit.elements].filter(
   (elem) => elem.tagName !== "BUTTON" && elem.type !== "submit"
@@ -65,8 +69,26 @@ const closeModal = function (event) {
     modalItem.classList.add("hide");
     document.removeEventListener("keydown", closeModal);
     modalSubmit.reset();
+    modalImageAdd.src = srcModalImage;
+    modalFileBtn.textContent = textFileBtn;
     checkForm();
   }
+};
+
+//Function render card prod
+const renderCard = () => {
+  catalog.textContent = '';
+  dataBase.forEach((item, i) => {
+    catalog.insertAdjacentHTML('beforeend', `
+      <li class="card">
+        <img class="card__image" src="img/temp.jpg" alt="test">
+        <div class="card__description">
+          <h3 class="card__header">Тестовая карточка</h3>
+          <div class="card__price">4000 ₽</div>
+        </div>
+      </li>
+    `);
+  });
 };
 
 //Change file name on button addPhoto
@@ -90,6 +112,8 @@ modalFileInput.addEventListener('change', (event) => {
       modalImageAdd.src = `data:image/jpeg;base64,${infoPhoto.base64}`;
     } else {
       modalFileBtn.textContent = 'размер файла привішает 200Кб';
+      modalFileInput.value = '';
+      checkForm();
     }
   });
 
@@ -107,11 +131,14 @@ modalSubmit.addEventListener("submit", (event) => {
     // console.log(elem);
     itemObj[elem.name] = elem.value;
   }
+
+  itemObj.image = infoPhoto.base64;
   // console.log(itemObj);
   dataBase.push(itemObj);
   // console.log(dataBase);
   closeModal({ target: modalAdd });
   saveDB();
+  renderCard();
 });
 
 // show modal
@@ -133,3 +160,5 @@ catalog.addEventListener("click", (event) => {
 //Clos modal
 modalAdd.addEventListener("click", closeModal);
 modalItem.addEventListener("click", closeModal);
+
+renderCard();
