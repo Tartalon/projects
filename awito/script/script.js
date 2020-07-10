@@ -1,6 +1,6 @@
 "use strict";
 
-const dataBase = [];
+const dataBase = JSON.parse(localStorage.getItem('awito')) || [];
 
 const modalAdd = document.querySelector(".modal__add"),
   addAd = document.querySelector(".add__ad"),
@@ -8,13 +8,10 @@ const modalAdd = document.querySelector(".modal__add"),
   modalSubmit = document.querySelector(".modal__submit"),
   catalog = document.querySelector(".catalog"),
   modalItem = document.querySelector(".modal__item "),
-  modalBtnWarning = document.querySelector(".modal__btn-warning");
-
-const checkForm = () => {
-  const validForm = elementsModalSubmit.every((elem) => elem.value);
-  modalBtnSubmit.disabled = !validForm;
-  modalBtnWarning.style.display = validForm ? "none" : "";
-};
+  modalBtnWarning = document.querySelector(".modal__btn-warning"),
+  modalFileInput = document.querySelector('.modal__file-input'),
+  modalFileBtn = document.querySelector('.modal__file-btn'),
+  modalImageAdd = document.querySelector('.modal__image-add');
 
 // Get form elements without button in arr
 const elementsModalSubmit = [...modalSubmit.elements].filter(
@@ -26,8 +23,19 @@ const elementsModalSubmit = [...modalSubmit.elements].filter(
 //   })
 // );
 
-// Function close modal
 
+const infoPhoto = {};
+
+//Localstorage
+const saveDB = () => localStorage.setItem('awito', JSON.stringify(dataBase));
+
+const checkForm = () => {
+  const validForm = elementsModalSubmit.every((elem) => elem.value);
+  modalBtnSubmit.disabled = !validForm;
+  modalBtnWarning.style.display = validForm ? "none" : "";
+};
+
+// Function close modal
 // const closeModal = (event) => {
 //   const target = event.target;
 
@@ -61,6 +69,33 @@ const closeModal = function (event) {
   }
 };
 
+//Change file name on button addPhoto
+modalFileInput.addEventListener('change', (event) => {
+  const target = event.target;
+
+  const reader = new FileReader();
+
+  // console.log(target.files[0]);
+  const file = target.files[0];
+  infoPhoto.filename = file.name;
+  infoPhoto.size = file.size;
+
+  reader.readAsBinaryString(file);
+
+  reader.addEventListener('load', event => {
+    if (infoPhoto.size < 200000) {
+      modalFileBtn.textContent = infoPhoto.filename;
+      infoPhoto.base64 = btoa(event.target.result);
+      console.log(infoPhoto);
+      modalImageAdd.src = `data:image/jpeg;base64,${infoPhoto.base64}`;
+    } else {
+      modalFileBtn.textContent = 'размер файла привішает 200Кб';
+    }
+  });
+
+  console.log(infoPhoto);
+});
+
 //Verification form on value
 modalSubmit.addEventListener("input", checkForm);
 
@@ -76,6 +111,7 @@ modalSubmit.addEventListener("submit", (event) => {
   dataBase.push(itemObj);
   // console.log(dataBase);
   closeModal({ target: modalAdd });
+  saveDB();
 });
 
 // show modal
