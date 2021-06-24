@@ -2,6 +2,9 @@ const score = document.querySelector('.score'),
   start = document.querySelector('.start'),
   gameArea = document.querySelector('.gameArea'),
   car = document.createElement('div');
+
+const music = new Audio('./music/corona.mp3');
+
 car.classList.add('car');
 
 start.addEventListener('click', startGame);
@@ -20,15 +23,29 @@ const setting = {
   start: false,
   score: 0,
   speed: 3,
-  traffic: 3,
+  traffic: 2.5,
 };
+
+const enemys = [
+  '../images/enemy1.png',
+  '../images/enemy2.png',
+  '../images/enemy3.png',
+  '../images/enemy4.png',
+  '../images/enemy5.png',
+  '../images/enemy6.png',
+];
 
 function getQuantityElements(heightElement) {
   return document.documentElement.clientHeight / heightElement + 1;
 }
 
 function startGame() {
+  music.play();
   start.classList.add('hide');
+  gameArea.innerHTML = '';
+  car.style.left = '125px';
+  car.style.top = 'auto';
+  car.style.bottom = '10px';
 
   for (let i = 0; i < getQuantityElements(100); i++) {
     const line = document.createElement('div');
@@ -45,11 +62,13 @@ function startGame() {
     enemy.style.left =
       Math.floor(Math.random() * (gameArea.offsetWidth - 50)) + 'px';
     enemy.style.top = enemy.y + 'px';
-    enemy.style.background =
-      'transparent url("../images/enemy.png") center / cover no-repeat';
+    enemy.style.background = `transparent url(${
+      enemys[Math.floor(Math.random() * enemys.length)]
+    }) center / cover no-repeat`;
     gameArea.appendChild(enemy);
   }
 
+  setting.score = 0;
   setting.start = true;
   gameArea.appendChild(car);
   setting.x = car.offsetLeft;
@@ -59,6 +78,8 @@ function startGame() {
 
 function playGame() {
   if (setting.start) {
+    setting.score++;
+    score.innerHTML = 'SCORE<br>' + setting.score;
     moveRoad();
     moveEnemy();
     if (keys.ArrowLeft && setting.x > 0) {
@@ -85,13 +106,17 @@ function playGame() {
 }
 
 function startRun(e) {
-  e.preventDefault();
-  keys[e.key] = true;
+  if (keys.hasOwnProperty(e.key)) {
+    e.preventDefault();
+    keys[e.key] = true;
+  }
 }
 
 function stopRun(e) {
-  e.preventDefault();
-  keys[e.key] = false;
+  if (keys.hasOwnProperty(e.key)) {
+    e.preventDefault();
+    keys[e.key] = false;
+  }
 }
 
 function moveRoad() {
@@ -109,6 +134,23 @@ function moveRoad() {
 function moveEnemy() {
   let enemy = document.querySelectorAll('.enemy');
   enemy.forEach(item => {
+    let carRect = car.getBoundingClientRect();
+    let enemyRect = item.getBoundingClientRect();
+
+    if (
+      carRect.top <= enemyRect.bottom &&
+      carRect.right >= enemyRect.left &&
+      carRect.left <= enemyRect.right &&
+      carRect.bottom >= enemyRect.top
+    ) {
+      setting.start = false;
+      music.currentTime = 0;
+      music.pause();
+      console.warn('DTP');
+      start.classList.remove('hide');
+      start.style.top = `${score.offsetHeight}px`;
+    }
+
     item.y += setting.speed / 2;
     item.style.top = item.y + 'px';
 
