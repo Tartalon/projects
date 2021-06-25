@@ -102,6 +102,7 @@ section {
 }
 body {
   line-height: 1;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 ol,
 ul {
@@ -128,6 +129,11 @@ button {
 
 .hide {
   display: none;
+}
+
+.game {
+  height: 100%;
+  display: flex;
 }
 
 .car,
@@ -167,19 +173,36 @@ button {
 }
 
 .start {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
+  height: calc(100px - 2rem);
   width: 100%;
   margin: 0;
-  padding: 2rem 0;
-  text-align: center;
+  padding: 1rem;
+  background-color: cornsilk;
+  box-shadow: 2px 2px 3px 1px #ccc;
+  font-size: 20px;
   z-index: 5;
-  color: #fff;
-  font-size: 1.5rem;
-  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  font: inherit;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 3px 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  font-family: sans-serif;
+}
+
+.btn:not(:last-child) {
+  margin-right: 15px;
 }
 
 .score {
